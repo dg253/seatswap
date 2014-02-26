@@ -83,8 +83,6 @@ abstract class page {
 	//returns muliples of 5
 	
 	//return multiples of 3&5
-	
-	
 }
 
 class homepage extends page {

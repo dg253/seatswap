@@ -63,17 +63,28 @@ abstract class page {
         echo $this->content;
     }
     
-    function numberSorter($start,$end){
-	//perform loop
+	//perform function
+	function numberSorter($start,$end,$multiple){
 	for($i = $start; $i <= $end; $i++){
+		if(!$this->checkMultiple($i,$multiple)){
+			echo 'seat'. "</br>";
+		}else{
 			echo $i. "</br>";
+		}
 	}
+	}
+	
 	//return multiples of 3
+	function checkMultiple($number,$multiple){
+		$result = fmod($number,$multiple);
+		return $result;
+	}
 	
 	//returns muliples of 5
 	
 	//return multiples of 3&5
-	}
+	
+	
 }
 
 class homepage extends page {
@@ -87,7 +98,7 @@ class code extends page {
     function get()
     {
     $this->content .= $this->menu();
-    $this->content .= $this->numberSorter(1,100);
+    $this->content .= $this->numberSorter(1,100,3);
     }
 }
 

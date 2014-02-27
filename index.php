@@ -64,14 +64,27 @@ abstract class page {
     }
     
 	//perform function
-	function numberSorter($start,$end,$multiple){
-	for($i = $start; $i <= $end; $i++){
-		if(!$this->checkMultiple($i,$multiple)){
-			echo 'seat'. "</br>";
-		}else{
-			echo $i. "</br>";
+	function numberSorter($start,$end,$multiples){
+		for($i = $start; $i <= $end; $i++) {
+			$results = array();
+			
+			foreach ($multiples as $multiple) {
+				//store TRUE or FALSE as value for key, which is $multiple
+				$results[$multiple] = $this->checkMultiple($i,$multiple);
+			}
+			
+			print_r($results);
+			
+			if($results[$multiples[0]] && $results[$multiples[1]]) {
+				echo 'SeatSwap'. "</br>";
+			}elseif($results[$multiples[1]]){
+				echo 'Swap'. "</br>";
+			}elseif($results[$multiples[0]]){
+				echo 'Seat'. "</br>";
+			}else{
+				echo $i. "</br>";
+			};
 		}
-	}
 	}
 	
 	//returns T or F if $number is a multiple of $multiple

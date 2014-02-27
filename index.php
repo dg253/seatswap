@@ -74,15 +74,14 @@ abstract class page {
 	}
 	}
 	
-	//return multiples of 3
+	//returns T or F if $number is a multiple of $multiple
 	function checkMultiple($number,$multiple){
 		$result = fmod($number,$multiple);
-		return $result;
+		if($result == 0){
+			return TRUE;
+		}
+		return FALSE;
 	}
-	
-	//returns muliples of 5
-	
-	//return multiples of 3&5
 }
 
 class homepage extends page {
@@ -96,7 +95,7 @@ class code extends page {
     function get()
     {
     $this->content .= $this->menu();
-    $this->content .= $this->numberSorter(1,100,3);
+    $this->content .= $this->numberSorter(1,100,array(3,5));
     }
 }
 
